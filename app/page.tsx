@@ -2,10 +2,10 @@ import { Metadata } from "next";
 import AgeTimer from "./components/AgeTimer";
 
 export const metadata: Metadata = {
-  title: "About - Caleb's Portfolio",
+  title: "Home",
   description:
-    "Learn more about Caleb, his background, and his journey in software development.",
-  metadataBase: new URL("https://calebhartslief.co.za/about"),
+    "A personal portfolio showcasing my projects, skills, and experience in software development.",
+  metadataBase: new URL("https://calebhartslief.co.za"),
 };
 
 export default function Home() {
