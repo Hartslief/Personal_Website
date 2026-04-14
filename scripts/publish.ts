@@ -10,7 +10,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getFunctions, httpsCallable } from "firebase/functions";
 import type { PostPayload } from "../types/blog";
 
-// ─── Firebase config (client SDK — safe to have locally) ───────────────────
+// **** Firebase config (client SDK — safe to have locally) ****
 const firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
     authDomain: process.env.FIREBASE_AUTH_DOMAIN,
@@ -22,7 +22,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const functions = getFunctions(app, "us-central1");
 
-// ─── Helpers ────────────────────────────────────────────────────────────────
+// **** Helpers ****
 const SUPPORTED_IMAGE_TYPES: Record<string, string> = {
     ".jpg": "image/jpeg",
     ".jpeg": "image/jpeg",
@@ -39,7 +39,7 @@ function encodeImage(filePath: string) {
     return { data, contentType };
 }
 
-// ─── Main ────────────────────────────────────────────────────────────────────
+// **** Main ****
 async function main() {
     const postDir = process.argv[2];
     if (!postDir) {
@@ -80,9 +80,9 @@ async function main() {
         ...encodeImage(path.join(postDir, filename)),
     }));
 
-    console.log(`📝 Post: ${frontmatter.title}`);
-    console.log(`🖼  Images found: ${images.length}`);
-    console.log(`📌 Draft: ${frontmatter.draft ?? false}`);
+    console.log(`Post: ${frontmatter.title}`);
+    console.log(`Images found: ${images.length}`);
+    console.log(`Draft: ${frontmatter.draft ?? false}`);
 
     // Sign in to Firebase so the callable function accepts the request
     const email = process.env.ADMIN_EMAIL;
@@ -93,7 +93,7 @@ async function main() {
         process.exit(1);
     }
 
-    console.log("🔐 Signing in...");
+    console.log("Signing in...");
     await signInWithEmailAndPassword(auth, email, password);
 
     // Call the Firebase Function
@@ -102,7 +102,7 @@ async function main() {
         { id: string; action: string }
     >(functions, "publishPost");
 
-    console.log("🚀 Publishing...");
+    console.log("Publishing...");
     const { data } = await publishPost({
         post: {
             title: frontmatter.title,
@@ -117,10 +117,10 @@ async function main() {
         images,
     });
 
-    console.log(`✅ Post ${data.action}: ${data.id}`);
+    console.log(`Post ${data.action}: ${data.id}`);
 }
 
 main().catch((err) => {
-    console.error("❌ Failed:", err.message);
+    console.error("Failed:", err.message);
     process.exit(1);
 });

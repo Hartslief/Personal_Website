@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-// import { getFunctions, httpsCallable } from "firebase-admin/functions";
-// import { initializeApp, getApps, cert } from "firebase-admin/app";
 import type { Post } from "@/types/blog";
 import Link from "next/link";
 import Image from "next/image";

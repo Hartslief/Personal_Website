@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 export default function Home() {
     return (
         <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+            <title>Home</title>
             <main className="flex min-h-screen w-full max-w-3xl flex-row justify-center items-center gap-3 bg-white dark:bg-black">
                 <div className="sm:text-xs lg:text-lg font-mono">I am </div>
                 <div className="sm:text-xs lg:text-lg font-mono mouse select-none">
@@ -21,9 +22,6 @@ export default function Home() {
                     years old.
                 </div>
             </main>
-            <Link href="/blog" className="text-lg font-mono hover:underline">
-                Blogs
-            </Link>
         </div>
     );
 }
