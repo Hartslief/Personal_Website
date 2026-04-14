@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import AgeTimer from "./components/AgeTimer";
+import Link from "next/link";
 
 export const metadata: Metadata = {
     title: "Home",
@@ -20,6 +21,9 @@ export default function Home() {
                     years old.
                 </div>
             </main>
+            <Link href="/blog" className="text-lg font-mono hover:underline">
+                Blogs
+            </Link>
         </div>
     );
 }
