@@ -1,3 +1,5 @@
-import { setGlobalOptions } from "firebase-functions";
+import { publishPost } from "./publishPost";
+import { revalidateOnPostChange } from "./triggers";
+import { getPosts, getPost } from "./blog";
 
-setGlobalOptions({ maxInstances: 10 });
+export { publishPost, revalidateOnPostChange, getPosts, getPost };
