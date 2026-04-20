@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
+import Navbar from "./components/Navbar";
 
 export const metadata: Metadata = {
     title: {
@@ -20,28 +21,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`$antialiased`}>
-                <header className="absolute top-0 left-0 w-full p-4 flex justify-center">
-                    <nav className="flex gap-4">
-                        <Link
-                            href="/"
-                            className="text-lg font-mono hover:underline"
-                        >
-                            Home
-                        </Link>
-                        <Link
-                            href="/blog"
-                            className="text-lg font-mono hover:underline"
-                        >
-                            Blogs
-                        </Link>
-                        <Link
-                            href="/about"
-                            className="text-lg font-mono hover:underline"
-                        >
-                            About
-                        </Link>
-                    </nav>
-                </header>
+                <Navbar />
                 {children}
             </body>
         </html>
