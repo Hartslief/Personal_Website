@@ -1,26 +1,142 @@
 @import "tailwindcss";
 
+/* ── Design tokens ───────────────────────────────────────────────── */
 :root {
-    --background: #ffffff;
-    --foreground: #171717;
+    --background: #0d0d0d;
+    --foreground: #f0ebe0;
 }
 
+/* In Tailwind v4 custom colors, fonts, and animations are declared here
+   inside @theme instead of tailwind.config.ts */
 @theme inline {
     --color-background: var(--background);
     --color-foreground: var(--foreground);
-    --font-sans: var(--font-geist-sans);
-    --font-mono: var(--font-geist-mono);
+
+    /* Custom palette */
+    --color-dark: #0d0d0d;
+    --color-ink: #f0ebe0;
+    --color-pop1: #ff5c35;
+    --color-pop2: #3ddc84;
+    --color-pop3: #ffd166;
+    --color-pop4: #a78bfa;
+
+    /* Fonts — populated by next/font variables set on <html> */
+    --font-display: var(--font-fraunces), serif;
+    --font-mono: var(--font-dm-mono), monospace;
+
+    /* Animations */
+    --animate-float-1: float 8s ease-in-out infinite;
+    --animate-float-2: float 8s ease-in-out -3s infinite;
+    --animate-float-3: float 8s ease-in-out -5s infinite;
+    --animate-fade-up: fadeUp 0.9s ease both;
+    --animate-fade-up-delay-1: fadeUp 0.9s ease 0.2s both;
+    --animate-fade-up-delay-2: fadeUp 0.9s ease 0.4s both;
+    --animate-fade-up-delay-3: fadeUp 0.9s ease 0.6s both;
+    --animate-fade-down: fadeDown 0.8s ease both;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
+/* ── Keyframes ───────────────────────────────────────────────────── */
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    33% {
+        transform: translateY(-30px) rotate(5deg);
+    }
+    66% {
+        transform: translateY(15px) rotate(-3deg);
     }
 }
 
-body {
-    background: var(--background);
-    color: var(--foreground);
-    font-family: Arial, Helvetica, sans-serif;
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Marquee — defined outside @layer so it's never purged */
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.marquee-track {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    width: max-content;
+    will-change: transform;
+    animation: marquee 20s linear infinite;
+}
+
+/* ── Base resets ─────────────────────────────────────────────────── */
+@layer base {
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background: var(--background);
+        color: var(--foreground);
+        font-family: var(--font-display);
+        cursor: none;
+        overflow-x: hidden;
+    }
+
+    /* Hide the default cursor on interactive elements too */
+    a,
+    button,
+    [role="button"] {
+        cursor: none;
+    }
+}
+
+/* ── Utilities ───────────────────────────────────────────────────── */
+@layer utilities {
+    /* Subtle noise grain over the whole page */
+    .noise-overlay::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    .blob {
+        border-radius: 50%;
+    }
+    .blob-organic {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
 }

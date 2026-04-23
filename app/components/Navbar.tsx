@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import Link from "next/link";
 
@@ -7,9 +6,11 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <header className="absolute w-full p-4 flex justify-between items-center">
-            {/* Logo */}
-            <Link href="/" className="flex flex-row text-2xl font-bold">
+        <header className="fixed top-0 left-0 w-full z-200 p-4 flex justify-between items-center">
+            <Link
+                href="/"
+                className="flex flex-row text-2xl font-bold font-display"
+            >
                 <div className="hover:text-[#ff0000]">C</div>
                 <div className="hover:text-[#ff8700]">A</div>
                 <div className="hover:text-[#ffd300]">L</div>
@@ -27,24 +28,24 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden md:flex gap-4">
+            <nav className="hidden md:flex gap-4 items-center">
                 <Link
                     href="/"
-                    className="text-lg font-mono font-bold hover:text-red-500"
+                    className="text-lg font-display font-bold hover:text-red-500"
                 >
                     Home
                 </Link>
-                |
+                <span className="opacity-30">|</span>
                 <Link
                     href="/blog"
-                    className="text-lg font-mono font-bold hover:text-orange-400"
+                    className="text-lg font-display font-bold hover:text-orange-400"
                 >
                     Blogs
                 </Link>
-                |
+                <span className="opacity-30">|</span>
                 <Link
                     href="/about"
-                    className="text-lg font-mono font-bold hover:text-yellow-400"
+                    className="text-lg font-display font-bold hover:text-yellow-400"
                 >
                     About
                 </Link>
@@ -54,15 +55,16 @@ export default function Navbar() {
             <button
                 className="md:hidden flex flex-col gap-1"
                 onClick={() => setIsOpen(!isOpen)}
+                aria-label="Toggle menu"
             >
-                <span className="w-6 h-0.5 bg-white"></span>
-                <span className="w-6 h-0.5 bg-white"></span>
-                <span className="w-6 h-0.5 bg-white"></span>
+                <span className="w-6 h-0.5 bg-white block" />
+                <span className="w-6 h-0.5 bg-white block" />
+                <span className="w-6 h-0.5 bg-white block" />
             </button>
 
-            {/* Mobile Dropdown */}
+            {/* Mobile Dropdown — also needs z-index to sit above content */}
             {isOpen && (
-                <div className="absolute top-16 right-4 bg-black border border-gray-700 rounded-lg p-4 flex flex-col gap-3 md:hidden">
+                <div className="absolute top-16 right-4 z-201 bg-black border border-gray-700 rounded-lg p-4 flex flex-col gap-3 md:hidden">
                     <Link href="/" onClick={() => setIsOpen(false)}>
                         Home
                     </Link>
