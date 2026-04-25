@@ -10,23 +10,6 @@ import {
     faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
-const LOGO_LETTERS = [
-    { char: "C", color: "#ff0000" },
-    { char: "A", color: "#ff8700" },
-    { char: "L", color: "#ffd300" },
-    { char: "E", color: "#deff0a" },
-    { char: "B", color: "#a1ff0a" },
-    { char: "H", color: "#0aff99" },
-    { char: "A", color: "#0aefff" },
-    { char: "R", color: "#147df5" },
-    { char: "T", color: "#580aff" },
-    { char: "S", color: "#be0aff" },
-    { char: "L", color: "#580aff" },
-    { char: "I", color: "#147df5" },
-    { char: "E", color: "#0aefff" },
-    { char: "F", color: "#0aff99" },
-];
-
 const NAV_LINKS = [
     {
         href: "/",
@@ -52,7 +35,7 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <header className="fixed top-0 left-0 w-full z-200 p-4 flex justify-between items-center">
+        <header className="fixed top-0 left-0 w-full z-200 p-4 flex justify-between items-center bg-dark/80 backdrop-blur-md">
             {/* Logo */}
             <Link
                 href="/"
@@ -77,20 +60,15 @@ export default function Navbar() {
             {/* Desktop Nav */}
             <nav className="hidden md:flex gap-4 items-center">
                 {NAV_LINKS.map(({ href, label, hoverColor }, i) => (
-                    <>
-                        {i > 0 && (
-                            <span key={`sep-${i}`} className="opacity-30">
-                                |
-                            </span>
-                        )}
+                    <span key={href} className="inline-flex items-center gap-4">
+                        {i > 0 && <span className="opacity-30">|</span>}
                         <Link
-                            key={href}
                             href={href}
                             className={`text-lg font-display font-bold ${hoverColor}`}
                         >
                             {label}
                         </Link>
-                    </>
+                    </span>
                 ))}
             </nav>
 
@@ -111,7 +89,7 @@ export default function Navbar() {
             <div
                 className={`
                     absolute top-full left-0 w-full md:hidden
-                    bg-dark/80 backdrop-blur-md border-b border-[#2a2a2a]
+                    bg-dark/80 backdrop-blur-md border-b border-[#2a2a2a]/50
                     overflow-hidden transition-all duration-300 ease-in-out
                     ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}
                 `}
@@ -142,7 +120,7 @@ export default function Navbar() {
                 </nav>
 
                 {/* Bottom accent line */}
-                <div className="h-0.5 bg-gradient-to-r from-pop1 via-pop3 to-pop2 opacity-50" />
+                <div className="h-0.5 bg-linear-to-r from-pop1 via-pop3 to-pop2 opacity-50" />
             </div>
         </header>
     );

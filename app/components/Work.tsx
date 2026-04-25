@@ -70,24 +70,25 @@ export default function Work() {
                             delay={i * 100}
                             className="h-full"
                         >
-                            <div
-                                className={`h-full flex flex-col bg-[#1a1a1a] rounded-3xl overflow-hidden border border-[#2a2a2a] transition-all duration-300 hover:-translate-y-2 ${
+                            <Link
+                                href={project.href}
+                                className={`h-full flex flex-col bg-[#1a1a1a] rounded-3xl overflow-hidden border border-[#2a2a2a] transition-all duration-300 hover:-translate-y-2 no-underline ${
                                     i % 2 === 0
                                         ? "hover:-rotate-1"
                                         : "hover:rotate-1"
                                 }`}
                             >
-                                {/* Thumbnail */}
                                 <div
                                     className={`h-56 shrink-0 flex items-center justify-center bg-linear-to-br ${project.gradient}`}
                                 >
                                     <FontAwesomeIcon
                                         icon={project.icon}
-                                        className="w-16 h-16 text-white drop-shadow-lg"
+                                        style={{ fontSize: "3rem" }}
+                                        className="text-white drop-shadow-lg"
                                     />
                                 </div>
 
-                                {/* Body — flex-1 so it fills remaining height, flex col to pin link to bottom */}
+                                {/* Body */}
                                 <div className="p-7 flex flex-col flex-1">
                                     <p className="font-mono text-[0.7rem] tracking-widest uppercase text-[#888] mb-2">
                                         {project.tag}
@@ -98,18 +99,16 @@ export default function Work() {
                                     <p className="font-mono text-[0.82rem] text-[#aaa] leading-relaxed flex-1">
                                         {project.description}
                                     </p>
-                                    <Link
-                                        href={project.href}
-                                        className="inline-flex items-center gap-2 mt-5 font-mono text-[0.8rem] text-pop3 no-underline group"
-                                    >
-                                        View case study
+                                    <div className="inline-flex items-center gap-2 mt-5 font-mono text-[0.8rem] text-pop3 group">
+                                        View project
                                         <FontAwesomeIcon
                                             icon={faArrowRight}
-                                            className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-1"
+                                            style={{ fontSize: "0.75rem" }}
+                                            className="transition-transform duration-200 group-hover:translate-x-1"
                                         />
-                                    </Link>
+                                    </div>
                                 </div>
-                            </div>
+                            </Link>
                         </Reveal>
                     ))}
                 </div>
