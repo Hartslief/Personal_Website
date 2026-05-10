@@ -17,22 +17,27 @@ export const metadata: Metadata = {
 };
 
 async function fetchPosts(): Promise<Post[]> {
-    const res = await fetch(
-        `https://us-central1-${process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID}.cloudfunctions.net/getPosts`,
-        {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ data: {} }),
-            next: { revalidate: 60 },
-        },
-    );
-    if (!res.ok) {
-        const text = await res.text();
-        console.error("Firebase error:", res.status, text);
-        throw new Error(`Failed to fetch posts: ${res.status} ${text}`);
+    try {
+        const res = await fetch(
+            `https://us-central1-${process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID}.cloudfunctions.net/getPosts`,
+            {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ data: {} }),
+                next: { revalidate: 60 },
+            },
+        );
+        if (!res.ok) {
+            const text = await res.text();
+            console.error("Firebase error:", res.status, text);
+            return [];
+        }
+        const json = await res.json();
+        return json.result ?? [];
+    } catch (err) {
+        console.error("Failed to fetch posts:", err);
+        return [];
     }
-    const json = await res.json();
-    return json.result;
 }
 
 export default async function BlogPage() {
