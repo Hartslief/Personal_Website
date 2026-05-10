@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import Reveal from "../components/Reveal";
 import AgeTimer from "../components/AgeTimer";
-import Image from "next/image";
 
 export const metadata: Metadata = {
     title: "About",
@@ -9,9 +8,6 @@ export const metadata: Metadata = {
         "Learn more about my background, and my journey in software development.",
     metadataBase: new URL("https://calebhartslief.co.za/about"),
 };
-
-const PHOTO_URL =
-    "https://firebasestorage.googleapis.com/v0/b/portfolio-b47bc.firebasestorage.app/o/portfolio_about_pic.jpg?alt=media&token=8f660aaf-29dd-4a51-9f63-42645f93dbcc";
 
 const skills = [
     "React",
@@ -33,13 +29,10 @@ export default function About() {
                     <div className="relative aspect-4/5 max-w-sm mx-auto md:max-w-none">
                         <div className="absolute inset-0 translate-x-4 -translate-y-4 bg-pop3 rounded-3xl z-0" />
                         <div className="relative z-10 w-full h-full rounded-3xl bg-linear-to-br from-[#1e1e1e] to-[#2a2a2a] border-2 border-[#333] flex flex-col items-center justify-center gap-3">
-                            <Image
-                                src={PHOTO_URL}
-                                alt="Caleb Hartslief"
-                                fill
-                                className="object-cover rounded-3xl"
-                                sizes="(max-width: 768px) 100vw, 50vw"
-                            />
+                            {/* Replace with <Image> when you have a real photo */}
+                            <span className="font-mono text-xs text-[#555]">
+                                photo coming soon
+                            </span>
                         </div>
                     </div>
                 </Reveal>
