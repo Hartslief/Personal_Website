@@ -53,7 +53,7 @@ export default async function PostPage({
     if (!post) notFound();
 
     return (
-        <main className="max-w-[740px] mx-auto px-6 py-32">
+        <main className="max-w-185 mx-auto px-6 py-32">
             {/* Back link */}
             <Link
                 href="/blog"
@@ -123,24 +123,9 @@ export default async function PostPage({
             {/* Divider */}
             <div className="w-16 h-0.5 bg-pop1 mb-10" />
 
-            {/* Content — prose styles override defaults to match the dark theme */}
+            {/* Content */}
             <div
-                className="
-                    prose prose-invert max-w-none
-                    prose-headings:font-display prose-headings:font-light prose-headings:tracking-tight
-                    prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-4
-                    prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-                    prose-p:font-mono prose-p:text-[#bbb] prose-p:leading-relaxed prose-p:text-sm
-                    prose-a:text-pop3 prose-a:no-underline hover:prose-a:underline
-                    prose-strong:text-ink prose-strong:font-bold
-                    prose-code:font-mono prose-code:text-pop2 prose-code:bg-[#1a1a1a] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:before:content-none prose-code:after:content-none
-                    prose-pre:bg-[#0d0d0d] prose-pre:border prose-pre:border-[#2a2a2a] prose-pre:rounded-2xl prose-pre:text-sm
-                    prose-blockquote:border-l-pop1 prose-blockquote:text-[#888] prose-blockquote:font-mono prose-blockquote:text-sm
-                    prose-ul:text-[#bbb] prose-ol:text-[#bbb]
-                    prose-li:font-mono prose-li:text-sm
-                    prose-hr:border-[#2a2a2a]
-                    prose-img:rounded-2xl prose-img:border prose-img:border-[#2a2a2a]
-                "
+                className="blog-content"
                 dangerouslySetInnerHTML={{ __html: post.content }}
             />
         </main>

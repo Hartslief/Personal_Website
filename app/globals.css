@@ -108,16 +108,137 @@
         background: var(--background);
         color: var(--foreground);
         font-family: var(--font-display);
-        cursor: none;
         overflow-x: hidden;
     }
 
-    /* Hide the default cursor on interactive elements too */
-    a,
-    button,
-    [role="button"] {
-        cursor: none;
-    }
+    /* cursor:none is applied by Cursor.tsx via JS only on pointer:fine devices
+     (mouse/trackpad). Touch devices keep their default cursor behaviour. */
+}
+
+/* ── Blog post content ───────────────────────────────────────────── */
+/* Styles the raw HTML output from the markdown renderer since
+   @tailwindcss/typography prose classes require a plugin install.
+   These target the actual HTML elements directly. */
+.blog-content {
+    color: #bbb;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    line-height: 1.85;
+}
+
+.blog-content h1,
+.blog-content h2,
+.blog-content h3,
+.blog-content h4 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: #f0ebe0;
+}
+
+.blog-content h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    margin: 3rem 0 1.2rem;
+}
+.blog-content h2 {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    margin: 2.5rem 0 1rem;
+    border-bottom: 1px solid #2a2a2a;
+    padding-bottom: 0.5rem;
+}
+.blog-content h3 {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    margin: 2rem 0 0.8rem;
+}
+
+/* First element needs no top margin */
+.blog-content > *:first-child {
+    margin-top: 0;
+}
+
+.blog-content p {
+    margin: 0 0 1.4rem;
+}
+.blog-content ul,
+.blog-content ol {
+    margin: 0 0 1.4rem 1.5rem;
+}
+.blog-content li {
+    margin-bottom: 0.4rem;
+}
+.blog-content ul {
+    list-style: disc;
+}
+.blog-content ol {
+    list-style: decimal;
+}
+
+.blog-content a {
+    color: #ffd166;
+    text-decoration: none;
+}
+.blog-content a:hover {
+    text-decoration: underline;
+}
+
+.blog-content strong {
+    color: #f0ebe0;
+    font-weight: 700;
+}
+.blog-content em {
+    font-style: italic;
+}
+
+/* Inline code */
+.blog-content :not(pre) > code {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    color: #ff5c35;
+    background: #1a1a1a;
+    padding: 0.15em 0.45em;
+    border-radius: 0.35rem;
+}
+
+/* Code blocks */
+.blog-content pre {
+    background: #0d0d0d;
+    border: 1px solid #2a2a2a;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    overflow-x: auto;
+    margin: 0 0 1.8rem;
+    line-height: 1.7;
+}
+.blog-content pre code {
+    background: none;
+    padding: 0;
+    color: #f0ebe0;
+    font-size: 0.85rem;
+}
+
+/* Blockquote */
+.blog-content blockquote {
+    border-left: 3px solid #ff5c35;
+    margin: 0 0 1.4rem;
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    color: #888;
+    font-style: italic;
+}
+
+/* Horizontal rule */
+.blog-content hr {
+    border: none;
+    border-top: 1px solid #2a2a2a;
+    margin: 2.5rem 0;
+}
+
+/* Images */
+.blog-content img {
+    width: 100%;
+    border-radius: 1rem;
+    border: 1px solid #2a2a2a;
+    margin: 1.5rem 0;
 }
 
 /* ── Utilities ───────────────────────────────────────────────────── */
