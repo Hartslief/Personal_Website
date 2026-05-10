@@ -39,7 +39,7 @@ export default async function BlogPage() {
     const posts = await fetchPosts();
 
     return (
-        <main className="max-w-[1100px] mx-auto px-6 py-32">
+        <main className="max-w-275 mx-auto px-6 py-32">
             {/* Header */}
             <div className="mb-16">
                 <p className="font-mono text-xs tracking-[0.15em] uppercase text-pop1 mb-4">
@@ -52,8 +52,7 @@ export default async function BlogPage() {
 
             {posts.length === 0 ? (
                 /* Empty state styled as a terminal comment */
-                <div className="font-mono text-sm text-[#555] border border-[#2a2a2a] rounded-2xl p-8 bg-[#0d0d0d]">
-                    <span className="text-pop4">// </span>
+                <div className="font-mono text-sm text-[#555] border border-[#2a2a2a] rounded-2xl p-8 bg-dark">
                     No posts yet — check back soon.
                 </div>
             ) : (
@@ -82,7 +81,7 @@ export default async function BlogPage() {
                             ) : (
                                 /* Gradient placeholder when no cover image */
                                 <div
-                                    className={`h-48 shrink-0 bg-gradient-to-br ${
+                                    className={`h-48 shrink-0 bg-linear-to-br ${
                                         [
                                             "from-pop1 to-pop3",
                                             "from-pop2 to-pop4",
