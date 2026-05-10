@@ -3,7 +3,7 @@ import Reveal from "./Reveal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faNetworkWired,
-    faHandHoldingHeart,
+    faGraduationCap,
     faUmbrellaBeach,
     faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
@@ -39,12 +39,12 @@ const projects: Project[] = [
     },
     {
         tag: "University · 2025",
-        name: "Ndikhondinani Skills Development NPO",
+        name: "University Projects",
         description:
-            "I was the PM and lead developer for this outreach project. We built an android app to help the NPO sign-up students for their upskilling programs, and inform users about upcoming charity events.",
-        icon: faHandHoldingHeart,
+            "During my Computer Science degree, I completed various projects that honed my skills in software development, algorithms, and problem-solving. Each project provided valuable hands-on experience and contributed to my growth as a developer.",
+        icon: faGraduationCap,
         gradient: "from-pop4 to-pop1",
-        href: "https://calebhartslief.co.za/blog/ndikhondinani-skills-development",
+        href: "https://github.com/CalebHartsliefST10255912",
     },
 ];
 
