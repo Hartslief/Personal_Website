@@ -72,6 +72,21 @@
 }
 
 /* Marquee — defined outside @layer so it's never purged */
+.marquee-wrapper {
+    display: flex; /* copies sit side-by-side */
+    width: max-content; /* shrink-wraps to actual content width */
+    animation: marquee 20s linear infinite;
+}
+
+.marquee-track {
+    display: flex;
+    gap: 2rem; /* spacing between items */
+    padding: 0;
+    margin: 0; /* kill any default ul margin */
+    list-style: none;
+    padding-right: 2rem; /* match the gap so seam is invisible */
+}
+
 @keyframes marquee {
     from {
         transform: translateX(0);
@@ -79,15 +94,6 @@
     to {
         transform: translateX(-50%);
     }
-}
-
-.marquee-track {
-    display: flex;
-    align-items: center;
-    gap: 2.5rem;
-    width: max-content;
-    will-change: transform;
-    animation: marquee 20s linear infinite;
 }
 
 /* ── Base resets ─────────────────────────────────────────────────── */
