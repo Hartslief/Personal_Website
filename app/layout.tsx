@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import { Fraunces, DM_Mono } from "next/font/google";
-import Cursor from "./components/Cursor";
+import CursorWrapper from "./components/CursorWrapper";
 
 const fraunces = Fraunces({
     subsets: ["latin"],
@@ -35,7 +35,7 @@ export default function RootLayout({
             <body
                 className={`antialiased text-ink overflow-x-hidden noise-overlay`}
             >
-                <Cursor />
+                <CursorWrapper />
                 <Navbar />
                 {children}
             </body>

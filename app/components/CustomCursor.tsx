@@ -6,7 +6,7 @@ const DOT_SIZE = 12;
 const RING_SIZE = 40;
 const RING_SIZE_HOVER = 60;
 
-export default function Cursor() {
+export default function CustomCursor() {
     /* 
         Refs give us direct DOM access so we can mutate styles every animation
         frame without triggering React re-renders, which would be far too slow

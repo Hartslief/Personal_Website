@@ -85,7 +85,6 @@
     margin: 0;
     list-style: none;
     padding-right: 2rem;
-    flex-shrink: 0;
 }
 
 @keyframes marquee {
@@ -118,8 +117,10 @@
         overflow-x: hidden;
     }
 
-    /* cursor:none is applied by Cursor.tsx via JS only on pointer:fine devices
-     (mouse/trackpad). Touch devices keep their default cursor behaviour. */
+    /*  
+        cursor:none is applied by Cursor.tsx via JS only on pointer:fine devices
+        (mouse/trackpad). Touch devices keep their default cursor behaviour. 
+    */
 }
 
 /* ── Blog post content ───────────────────────────────────────────── */
@@ -266,5 +267,12 @@
     }
     .blob-organic {
         border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+}
+
+/* ── Cursor ───────────────────────────────────────────────────────── */
+@media (pointer: fine) {
+    * {
+        cursor: none !important;
     }
 }
