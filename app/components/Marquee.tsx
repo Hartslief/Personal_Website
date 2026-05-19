@@ -9,10 +9,15 @@ const items = [
     "Tailwind CSS",
     "REST APIs",
     "Azure",
-    "Git & CI/CD",
+    "Git",
     ".NET",
     "Firebase",
     "SQL",
+    "Next.js",
+    "Framer Motion",
+    "CI/CD",
+    "Java",
+    "OracleDB",
 ];
 
 // We render TWO identical copies of the item list inside a single animated
